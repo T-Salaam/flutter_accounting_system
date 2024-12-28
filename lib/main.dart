@@ -1,5 +1,9 @@
+import 'package:accounting_app/pages/expenses_page.dart';
+import 'package:accounting_app/pages/revenues_page.dart';
 import 'package:flutter/material.dart';
 import 'pages/students_page.dart';
+import 'package:accounting_app/pages/reports_page.dart';
+import 'package:accounting_app/pages/general_ledger_page.dart';
 
 void main() {
   runApp(MyApp());
@@ -42,144 +46,59 @@ class MyHomePage extends StatelessWidget {
             ),
             child: SingleChildScrollView(
               child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: <Widget>[
-                  DrawerHeader(
-                    decoration: BoxDecoration(
-                      gradient: LinearGradient(
-                        colors: [Color(0xFF1E88E5), Color(0xFF1565C0)],
-                      ),
+                children: [
+                  ListTile(
+                    leading: Icon(Icons.person, color: Colors.white),
+                    title: Text(
+                      'الطلاب',
+                      style: TextStyle(color: Colors.white),
                     ),
-                    child: Center(
-                      child: Text(
-                        'القائمة الرئيسية',
-                        style: TextStyle(
-                          color: Colors.white,
-                          fontSize: 16,
-                          fontWeight: FontWeight.bold,
-                        ),
-                      ),
-                    ),
-                  ),
-                  ExpansionTile(
-                    leading: _iconWithBackground(
-                      icon: Icons.attach_money,
-                      backgroundColor: Colors.green,
-                    ),
-                    title: Text('الإيرادات',
-                        style: TextStyle(color: Colors.white)),
-                    children: <Widget>[
-                      ListTile(
-                        leading: _iconWithBackground(
-                          icon: Icons.school,
-                          backgroundColor: Colors.blueAccent,
-                        ),
-                        title: Text('الأقساط الدراسية',
-                            style: TextStyle(color: Colors.white)),
-                        onTap: () {},
-                      ),
-                      ListTile(
-                        leading: _iconWithBackground(
-                          icon: Icons.directions_bus,
-                          backgroundColor: Colors.orangeAccent,
-                        ),
-                        title: Text('اشتراك الباص',
-                            style: TextStyle(color: Colors.white)),
-                        onTap: () {},
-                      ),
-                      ListTile(
-                        leading: _iconWithBackground(
-                          icon: Icons.sports,
-                          backgroundColor: Colors.redAccent,
-                        ),
-                        title: Text('إيرادات الأنشطة الرياضية',
-                            style: TextStyle(color: Colors.white)),
-                        onTap: () {},
-                      ),
-                    ],
-                  ),
-                  ExpansionTile(
-                    leading: _iconWithBackground(
-                      icon: Icons.money_off,
-                      backgroundColor: Colors.red,
-                    ),
-                    title: Text('المصروفات',
-                        style: TextStyle(color: Colors.white)),
-                    children: <Widget>[
-                      ListTile(
-                        leading: _iconWithBackground(
-                          icon: Icons.people,
-                          backgroundColor: Colors.purpleAccent,
-                        ),
-                        title: Text('رواتب الموظفين',
-                            style: TextStyle(color: Colors.white)),
-                        onTap: () {},
-                      ),
-                      ListTile(
-                        leading: _iconWithBackground(
-                          icon: Icons.build,
-                          backgroundColor: Colors.blueGrey,
-                        ),
-                        title: Text('صيانة المباني',
-                            style: TextStyle(color: Colors.white)),
-                        onTap: () {},
-                      ),
-                      ListTile(
-                        leading: _iconWithBackground(
-                          icon: Icons.shopping_cart,
-                          backgroundColor: Colors.teal,
-                        ),
-                        title: Text('المصروفات الإدارية',
-                            style: TextStyle(color: Colors.white)),
-                        onTap: () {},
-                      ),
-                    ],
-                  ),
-                  ExpansionTile(
-                    leading: _iconWithBackground(
-                      icon: Icons.person,
-                      backgroundColor: Colors.amber,
-                    ),
-                    title: Text('الموظفون',
-                        style: TextStyle(fontSize: 14, color: Colors.white)),
-                    children: <Widget>[
-                      ListTile(
-                        leading: _iconWithBackground(
-                          icon: Icons.badge,
-                          backgroundColor: Colors.cyan,
-                        ),
-                        title: Text('إضافة موظف',
-                            style: TextStyle(color: Colors.white)),
-                        onTap: () {},
-                      ),
-                      ListTile(
-                        leading: _iconWithBackground(
-                          icon: Icons.list,
-                          backgroundColor: Colors.orange,
-                        ),
-                        title: Text('عرض قائمة الموظفين',
-                            style: TextStyle(color: Colors.white)),
-                        onTap: () {},
-                      ),
-                    ],
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => StudentsPage()),
+                      );
+                    },
                   ),
                   ListTile(
-                    leading: _iconWithBackground(
-                      icon: Icons.bar_chart,
-                      backgroundColor: Colors.indigo,
+                    leading: Icon(Icons.attach_money, color: Colors.white),
+                    title: Text(
+                      'الإيرادات',
+                      style: TextStyle(color: Colors.white),
                     ),
-                    title:
-                        Text('التقارير', style: TextStyle(color: Colors.white)),
-                    onTap: () {},
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => RevenuesPage()),
+                      );
+                    },
                   ),
                   ListTile(
-                    leading: _iconWithBackground(
-                      icon: Icons.settings,
-                      backgroundColor: Colors.grey,
+                    leading: Icon(Icons.bar_chart, color: Colors.white),
+                    title: Text(
+                      'التقارير',
+                      style: TextStyle(color: Colors.white),
                     ),
-                    title: Text('الإعدادات',
-                        style: TextStyle(color: Colors.white)),
-                    onTap: () {},
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => ReportsPage()),
+                      );
+                    },
+                  ),
+                  ListTile(
+                    leading: Icon(Icons.book, color: Colors.white),
+                    title: Text(
+                      'كراسة الأستاذ',
+                      style: TextStyle(color: Colors.white),
+                    ),
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => GeneralLedgerPage()),
+                      );
+                    },
                   ),
                 ],
               ),
@@ -202,28 +121,36 @@ class MyHomePage extends StatelessWidget {
                         context,
                         MaterialPageRoute(builder: (context) => StudentsPage()),
                       );
-                      print('إضافة طالب');
                     },
                   ),
                   _buildMainIcon(
                     icon: Icons.attach_money,
                     label: 'الإيرادات',
                     onTap: () {
-                      print('الإيرادات');
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => RevenuesPage()),
+                      );
                     },
                   ),
                   _buildMainIcon(
                     icon: Icons.money_off,
                     label: 'المصروفات',
                     onTap: () {
-                      print('المصروفات');
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => ExpensesPage()),
+                      );
                     },
                   ),
                   _buildMainIcon(
                     icon: Icons.bar_chart,
                     label: 'التقارير',
                     onTap: () {
-                      print('التقارير');
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => ReportsPage()),
+                      );
                     },
                   ),
                   _buildMainIcon(
@@ -231,6 +158,17 @@ class MyHomePage extends StatelessWidget {
                     label: 'الإعدادات',
                     onTap: () {
                       print('الإعدادات');
+                    },
+                  ),
+                  _buildMainIcon(
+                    icon: Icons.book,
+                    label: 'كراسة الأستاذ',
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => GeneralLedgerPage()),
+                      );
                     },
                   ),
                 ],
@@ -243,10 +181,11 @@ class MyHomePage extends StatelessWidget {
   }
 
   // تصميم الأيقونات الرئيسية
-  Widget _buildMainIcon(
-      {required IconData icon,
-      required String label,
-      required VoidCallback onTap}) {
+  Widget _buildMainIcon({
+    required IconData icon,
+    required String label,
+    required VoidCallback onTap,
+  }) {
     return GestureDetector(
       onTap: onTap,
       child: Container(
@@ -264,8 +203,11 @@ class MyHomePage extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Icon(icon,
-                size: 48, color: const Color.fromARGB(255, 71, 223, 190)),
+            Icon(
+              icon,
+              size: 48,
+              color: const Color.fromARGB(255, 71, 223, 190),
+            ),
             SizedBox(height: 8),
             Text(
               label,
@@ -277,22 +219,6 @@ class MyHomePage extends StatelessWidget {
             ),
           ],
         ),
-      ),
-    );
-  }
-
-  // تصميم الأيقونة داخل دائرة
-  Widget _iconWithBackground(
-      {required IconData icon, required Color backgroundColor}) {
-    return Container(
-      decoration: BoxDecoration(
-        color: backgroundColor,
-        shape: BoxShape.circle,
-      ),
-      padding: EdgeInsets.all(8.0),
-      child: Icon(
-        icon,
-        color: Colors.white,
       ),
     );
   }
